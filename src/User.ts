@@ -1,4 +1,5 @@
 import faker from 'faker';
+import { generateLocation } from './helpers';
 
 export class User {
   name: string;
@@ -8,16 +9,6 @@ export class User {
   };
   constructor() {
     this.name = `${faker.name.firstName()} ${faker.name.lastName()}`;
-    try {
-      this.location = {
-        lat: parseFloat(faker.address.latitude()),
-        lng: parseFloat(faker.address.longitude()),
-      };
-    } catch {
-      this.location = {
-        lng: 0,
-        lat: 0,
-      };
-    }
+    this.location = generateLocation();
   }
 }

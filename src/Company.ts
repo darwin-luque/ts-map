@@ -1,4 +1,5 @@
 import faker from 'faker';
+import { generateLocation } from './helpers';
 
 export class Company {
   name: string;
@@ -11,16 +12,6 @@ export class Company {
   constructor() {
     this.name = faker.company.companyName();
     this.catchPhrase = faker.company.catchPhrase();
-    try {
-      this.location = {
-        lat: parseFloat(faker.address.latitude()),
-        lng: parseFloat(faker.address.longitude()),
-      };
-    } catch {
-      this.location = {
-        lng: 0,
-        lat: 0,
-      };
-    }
+    this.location = generateLocation();
   }
 }

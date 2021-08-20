@@ -2,7 +2,7 @@ export interface Mappable {
   location: { lat: number; lng: number };
   name: string;
   markerContent(): string;
-  color: string;
+  color?: string;
 }
 
 export class CustomMap {
